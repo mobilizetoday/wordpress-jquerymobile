@@ -15,14 +15,18 @@ Description
 
 = Features =
 
-*
-*
-*
+* Mobile optimized
+* Compatible with desktop and mobile browsers, including iPad, iPhone and Android
+* 1/2 columns adaptive layout
+* Based on jQueryMobile framework
+* Supports all default widgets
 
 = Feature Plan =
 
-*
-*
+* Themable designs
+* Support of swipeleft/swiperight events
+* Support of post thumbnails
+* Page load by AJAX
 
 == Changelog ==
 
