@@ -14,6 +14,6 @@
 <body <?php body_class(); ?>>
 	<div data-role="page" id="jqm-home">
 		<div data-role="header">
-			<h1><?php if (is_home()) bloginfo('name'); else wp_title('',true); ?></h1>
+			<h1><?php if (is_home()) echo get_bloginfo('name'). " | ". get_bloginfo('description'); else wp_title('',true); ?></h1>
 		</div>
 		<div data-role="content">
