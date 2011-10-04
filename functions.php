@@ -7,13 +7,13 @@ add_theme_support( 'automatic-feed-links' );
 
 function jquerymobile_enquee_script() {
 	wp_enqueue_script('theme-script', get_stylesheet_directory_uri().'/script.js', array('jquery'));
-	wp_enqueue_script('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.0b3.min.js', array('jquery'), '1.0b3');
+	wp_enqueue_script('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.0rc1.min.js', array('jquery'), '1.0rc1');
 }
 add_action('wp_enqueue_scripts', 'jquerymobile_enquee_script'); // For use on the Front end (ie. Theme)
 
 
 function jquerymobile_enquee_style() {
-    wp_enqueue_style('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.0b3.min.css', false, '1.0b3');
+    wp_enqueue_style('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.0rc1.min.css', false, '1.0rc1');
 }
 add_action('wp_print_styles', 'jquerymobile_enquee_style');
 

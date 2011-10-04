@@ -1,7 +1,7 @@
-/*   
-Theme Name: jQueryMobile
+/*
+Theme Name: jQMobile
 Theme URI: http://www.mobilizetoday.com/wordpress-themes/jquerymobile/
-Version: 0.1
+Version: 0.2
 Description: Mobile friendly theme based on jQueryMobile framework. 1/2 columns adaptive layout. Supports default widgets.
 Author: MobilizeToday.com
 Author URI: http://www.mobilizetoday.com/wordpress-themes/
@@ -127,6 +127,7 @@ div[data-role='header'] .ui-title{
 }
 #sidebar .ui-collapsible-content{
 	padding: 0;
+	margin: 0;
 }
 .ui-content #sidebar .ui-listview{
 	margin: 0;
@@ -232,6 +233,11 @@ div[data-role='header'] .ui-title{
 }
 #respond {
 	margin: 0 0 1.5em;
+}
+#respond .required{
+	margin: 0 0 0 -19px;
+	width: 15px;
+	display: inline-block;
 }
 .textwidget p{
 	margin: .5em 0;
@@ -346,6 +352,13 @@ blockquote{
 	.right,
 	#sidebar{
 		float: none;
+		width: auto;
+	}
+	#respond label{
+		display: inline;
+	}
+	#respond .required{
+		margin: 0;
 		width: auto;
 	}
 	#respond .ui-field-contain{
