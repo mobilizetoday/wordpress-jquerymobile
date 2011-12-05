@@ -1,7 +1,7 @@
 /*
 Theme Name: jQMobile
 Theme URI: http://www.mobilizetoday.com/wordpress-themes/jquerymobile/
-Version: 0.2
+Version: 0.3
 Description: Mobile friendly theme based on jQueryMobile framework. 1/2 columns adaptive layout. Supports default widgets.
 Author: MobilizeToday.com
 Author URI: http://www.mobilizetoday.com/wordpress-themes/
@@ -56,11 +56,11 @@ a img.aligncenter{
     margin-right: auto
 }
 .wp-caption{
-    background: #fff;
-    border: 1px solid #f0f0f0;
     max-width: 96%; /* Image does not overflow the content area */
     padding: .357em 3px .714em;
     text-align: center;
+	background: #fff;
+    border: 1px solid #f0f0f0;
 }
 .wp-caption.alignnone{
     margin: .357em 20px 1.429em 0;
@@ -113,7 +113,7 @@ a img.aligncenter{
 }
 div[data-role='header'] .ui-title{
 	text-align: left;
-	margin-left: 15px;
+	margin-left: 45px;
 }
 .ui-content .ui-listview-inset{
 	margin-top: 0;
@@ -131,8 +131,6 @@ div[data-role='header'] .ui-title{
 }
 .ui-content #sidebar .ui-listview{
 	margin: 0;
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
 }
 .widget .ui-select{
 	width: 100%;
@@ -147,15 +145,6 @@ div[data-role='header'] .ui-title{
 #sidebar.ui-collapsible-set,
 #sidebar .ui-collapsible-heading{
 	margin: 0;
-}
-.commentlist li.comment{
-	background: #eee;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#fdfdfd),to(#eee));
-	background-image: -webkit-linear-gradient(top,#fdfdfd,#eee);
-	background-image: -moz-linear-gradient(top,#fdfdfd,#eee);
-	background-image: -ms-linear-gradient(top,#fdfdfd,#eee);
-	background-image: -o-linear-gradient(top,#fdfdfd,#eee);
-	background-image: linear-gradient(top,#fdfdfd,#eee);
 }
 .commentlist .ui-li-has-thumb{
 	padding: .417em 15px .417em 75px;
@@ -194,9 +183,7 @@ div[data-role='header'] .ui-title{
 	font-weight: bold;
 }
 #wp-calendar tbody td{
-	border: 1px solid #aaa;
 	padding: 5px 3px;
-	background: #ddd;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -206,16 +193,9 @@ div[data-role='header'] .ui-title{
 }
 #wp-calendar thead th{
 	padding: 5px 3px;
-	border: 1px solid #666;
-	background: #999;
-	color: #fff;
-	text-shadow: 0 1px 0 #333;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-}
-#wp-calendar #today{
-	background: #aaa;
 }
 #wp-calendar .pad{
 	border-style: none;
@@ -234,11 +214,11 @@ div[data-role='header'] .ui-title{
 #respond {
 	margin: 0 0 1.5em;
 }
-#respond .required{
+/*#respond .required{
 	margin: 0 0 0 -19px;
 	width: 15px;
 	display: inline-block;
-}
+}*/
 .textwidget p{
 	margin: .5em 0;
 }
@@ -254,8 +234,6 @@ div[data-role='header'] .ui-title{
 }
 #comments,
 #respond h2{
-	border-top: 1px solid #bbb;
-	box-shadow: 0 -1px 0 0 #fff;
 	padding: .5em 0 0;
 }
 .entry img[not='wp-smiley']{
@@ -267,10 +245,9 @@ div.post{
 }
 label.ui-input-text{
 	font-size: 1em;
-	width: 30%;
+	display: inline;
 }
 .ui-body-c .ui-link.rsswidget{
-	color: #fff;
 	text-decoration: none;
 }
 .entry{
@@ -282,18 +259,6 @@ label.ui-input-text{
 }
 blockquote{
 	margin: 1em 0 1em 20px;
-}
-.widget_tag_cloud .ui-body-c,
-.widget_text .ui-body-c,
-.widget_calendar .ui-body-c{
-	border: 1px solid #ccc;
-	background: #eee;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#fdfdfd),to(#eee));
-	background-image: -webkit-linear-gradient(top,#fdfdfd,#eee);
-	background-image: -moz-linear-gradient(top,#fdfdfd,#eee);
-	background-image: -ms-linear-gradient(top,#fdfdfd,#eee);
-	background-image: -o-linear-gradient(top,#fdfdfd,#eee);
-	background-image: linear-gradient(top,#fdfdfd,#eee);
 }
 .widget .ui-select{
 	margin-top: .571em;
@@ -332,34 +297,30 @@ blockquote{
 .pages > span{
 	font-size: 0.8em;
 }
-.pages > span{
-	border: 1px solid #bbb;
-	background: #dadada;
-	color: #101010;
-	text-shadow: 0 1px 1px #fff;
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#ededed),to(#dadada));
-	background-image: -webkit-linear-gradient(top,#ededed,#dadada);
-	background-image: -moz-linear-gradient(top,#ededed,#dadada);
-	background-image: -ms-linear-gradient(top,#ededed,#dadada);
-	background-image: -o-linear-gradient(top,#ededed,#dadada);
-	background-image: linear-gradient(top,#ededed,#dadada);
-}
 .tags .ui-btn-inner,
 .pages .ui-btn-inner{
 	padding: .3em 6px;
 }
+
+/* left sidebar */
+.left-sidebar .right{
+	float: right;
+}
+.left-sidebar #sidebar{
+	float: left;
+}
+
+
 @media all and (max-width: 480px) {
 	.right,
-	#sidebar{
+	#sidebar,
+	.left-sidebar .right,
+	.left-sidebar #sidebar{
 		float: none;
 		width: auto;
 	}
 	#respond label{
 		display: inline;
-	}
-	#respond .required{
-		margin: 0;
-		width: auto;
 	}
 	#respond .ui-field-contain{
 		padding: 1em 0;
@@ -376,8 +337,5 @@ blockquote{
 	}
 	.submit-btn{
 		padding: 0;
-	}
-	label.ui-input-text{
-		width: 97%;
 	}
 }

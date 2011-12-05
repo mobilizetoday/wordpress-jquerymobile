@@ -10,7 +10,7 @@
 	
 	<h2 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?></h2>
 
-	<ul class="commentlist" data-role="listview" data-inset="true">
+	<ul class="commentlist" data-role="listview" data-inset="true"<?php jqmobile_ui('comment');?>>
 		<?php wp_list_comments( array( 'max_depth' => 1, 'callback' => 'jquerymobile_comment' ) ); ?>
 	</ul>
 

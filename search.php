@@ -3,7 +3,7 @@
 	<div class="right">
 	<?php if (have_posts()) : ?>
 		<?php get_search_form(); ?>
-		<ul data-role="listview" data-inset="true">
+		<ul data-role="listview" data-inset="true"<?php jqmobile_ui('post');?>>
 			<?php while (have_posts()) : the_post(); ?>
 				<li>
 					<a href="<?php the_permalink() ?>">

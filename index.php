@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 <div class="right">
 	<?php if (have_posts()): ?>
-		<ul data-role="listview" data-inset="true">
+		<ul data-role="listview" data-inset="true"<?php jqmobile_ui('post');?>>
 			<?php while (have_posts()) : the_post(); ?>
-				<li>
+				<li<?php if(is_sticky()) {jqmobile_ui('sticky');} ?>>
 					<a href="<?php the_permalink() ?>">
 						<p class="ui-li-aside"><?php the_time('Y-m-d'); ?></p>
 						<h3><?php the_title(); ?></h3>

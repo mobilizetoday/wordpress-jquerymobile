@@ -1,4 +1,4 @@
-<ul class="meta" data-role="listview" data-inset="true">
+<ul class="meta" data-role="listview" data-inset="true"<?php jqmobile_ui('post');?>>
 	<li>
 		<a href="<?php the_permalink(); ?>">
 			<p class="ui-li-aside"><?php the_time('Y-m-d'); ?></p>

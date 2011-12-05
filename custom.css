@@ -1,0 +1,25 @@
+
+.ui-content #sidebar .ui-listview{
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+#wp-calendar tbody td{
+	border: 1px solid #aaa;
+	background: #ddd;
+}
+#wp-calendar thead th{
+	border: 1px solid #666;
+	background: #999;
+	color: #fff;
+	text-shadow: 0 1px 0 #333;
+}
+#wp-calendar #today{
+	background: #aaa;
+}
+#comments,
+#respond h2{
+	padding: .5em 0 0;
+}
+.ui-body-c .ui-link.rsswidget{
+	color: #fff;
+}

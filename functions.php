@@ -1,28 +1,112 @@
 <?php
 
+add_action( 'after_setup_theme', 'jqmobile_setup' );
+
+if ( ! function_exists( 'jqmobile_setup' ) ) {
+	function jqmobile_setup() {
+		require( dirname( __FILE__ ) . '/inc/theme-options.php' );
+	}
+}
+
 require( dirname( __FILE__ ) . '/inc/classes.php' );
 
 $content_width = 600;
 add_theme_support( 'automatic-feed-links' );
 
+
+function jqmobile_get_default_theme_options() {
+	$default_theme_options = array(
+		'color_scheme' => 'default',
+		'mobile_layout' => 'content-sidebar',
+		'ui' => array()
+	);
+
+	return apply_filters( 'jqmobile_default_theme_options', $default_theme_options );
+}
+
+function jqmobile_mobile_entities() {
+	$layout_options = array(
+		'body' => array(
+			'label' => __( 'Body', 'jqmobile' ),
+			'default' => 'c'
+		),
+		'header' => array(
+			'label' => __( 'Header', 'jqmobile' ),
+			'default' => 'a'
+		),
+		'footer' => array(
+			'label' => __( 'Footer', 'jqmobile' ),
+			'default' => 'a'
+		),
+		'post' => array(
+			'label' => __( 'Post Teaser', 'jqmobile' ),
+			'default' => 'c'
+		),
+		'sticky' => array(
+			'label' => __( 'Sticky Post', 'jqmobile' ),
+			'default' => 'b'
+		),
+		'widget' => array(
+			'label' => __( 'Widget', 'jqmobile' ),
+			'default' => 'c'
+		),
+		'widget_content' => array(
+			'label' => __( 'Widget Content', 'jqmobile' ),
+			'default' => 'c'
+		),
+		'comment' => array(
+			'label' => __( 'Comments', 'jqmobile' ),
+			'default' => 'c'
+		),
+		'form_comment' => array(
+			'label' => __( 'Comment Form', 'jqmobile' ),
+			'default' => 'c'
+		),
+	);
+
+	return apply_filters( 'jqmobile_mobile_layouts', $layout_options );
+}
+
+function jqmobile_get_theme_options() {;
+	return get_option( 'jqmobile_theme_options', jqmobile_get_default_theme_options() );
+}
+
+function jqmobile_get_ui($key = '') {
+	static $ui_options;
+
+	if (!is_array($ui_options)) {
+		$options = jqmobile_get_theme_options();
+		$ui_options = $options['ui'];
+	}
+	return isset($ui_options[$key]) ? $ui_options[$key] : '';
+}
+
+function jqmobile_ui($key = '') {
+
+	$data = jqmobile_get_ui($key);
+	if ($data) {
+		echo ' data-theme="'.$data.'"';
+	}
+}
+
 function jquerymobile_enquee_script() {
 	wp_enqueue_script('theme-script', get_stylesheet_directory_uri().'/script.js', array('jquery'));
-	wp_enqueue_script('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.0rc1.min.js', array('jquery'), '1.0rc1');
+	wp_enqueue_script('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.0.min.js', array('jquery'), '1.0');
 }
-add_action('wp_enqueue_scripts', 'jquerymobile_enquee_script'); // For use on the Front end (ie. Theme)
-
+add_action('wp_enqueue_scripts', 'jquerymobile_enquee_script');
 
 function jquerymobile_enquee_style() {
-    wp_enqueue_style('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.0rc1.min.css', false, '1.0rc1');
+    wp_enqueue_style('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile.structure-1.0.min.css', false, '1.0');
+    wp_enqueue_style('custom', get_stylesheet_directory_uri().'/custom.css', false);
 }
 add_action('wp_print_styles', 'jquerymobile_enquee_style');
 
 function jquerymobile_widgets_init() {
 	register_sidebar(array(
 		'name' => 'Sidebar Widgets',
-		'id'   => 'sidebar-widgets',
+		'id'   => 'sidebar',
 		'description'   => 'These are widgets for the sidebar.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s"  data-role="collapsible" data-theme="a">',
+		'before_widget' => '<div id="%1$s" class="widget %2$s"  data-role="collapsible" data-theme="'.jqmobile_get_ui('widget').'">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h2>',
 		'after_title'   => '</h2>'
@@ -126,7 +210,7 @@ function jquerymobile_comment( $comment, $args, $depth ) {
 			break;
 		default :
 	?>
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>" <?php jqmobile_ui('comment');?>>
 		<div id="comment-<?php comment_ID(); ?>" class="comment vcard ui-link-inherit">
 				<?php
 					$avatar_size = 60;

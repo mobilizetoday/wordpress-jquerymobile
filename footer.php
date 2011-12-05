@@ -1,5 +1,5 @@
 			</div>
-			<div data-role="footer" class="ui-bar">
+			<div data-role="footer" class="ui-bar"<?php jqmobile_ui('footer');?>>
 				<div class="logos">
 					<a href="http://wordpress.org/" class="icon icon-custom-wp">Wordpress</a>
 					<a href="http://http://jquerymobile.com/" class="icon icon-custom-jqm">jQueryMobile</a>
