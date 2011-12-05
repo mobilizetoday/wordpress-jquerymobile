@@ -24,6 +24,12 @@ Experimental theme with jQueryMobile framework
 
 == Changelog ==
 
+= 0.3 =
+* Update to jquerymobile-1.0
+* ThemeRoller Support
+* 3 experimental themes
+* Theme Options page
+
 = 0.2 =
 * Update to jquerymobile-1.0rc1
 
