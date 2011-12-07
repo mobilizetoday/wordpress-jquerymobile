@@ -34,17 +34,19 @@ function jqmobile_theme_options_add_page() {
 	if ( ! $theme_page )
 		return;
 
-	$help = '<p>' . __( 'Some themes provide customization options that are grouped together on a Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, jQMobile, provides the following Basic Options:', 'jqmobile' ) . '</p>' .
+	$help = '<p>' . __( 'Your current theme, jQMobile, provides Basic and Advanced settings. See descriptions below.', 'jqmobile' ) . '</p>' .
+		'<p><strong>Basic Settings</strong></p>' .
 		'<ol>' .
-			'<li>' . __( '<strong>Color Scheme</strong>: You can choose a color palette of "Default", "Valencia" or "Green" for your site.', 'jqmobile' ) . '</li>' .
-			'<li>' . __( '<strong>Upload Theme</strong>: .', 'jqmobile' ) . '</li>' .
-			'<li>' . __( '<strong>Mobile Layout</strong>: You can choose if you want your site&#8217;s mobile layout to manage sidebar visibility.', 'jqmobile' ) . '</li>' .
+			'<li>' . __( '<strong>Color Scheme</strong>: Here you can choose one of the available color schemes for your website. By default three schemes are available: "Default", "Valencia" and "Green".', 'jqmobile' ) . '</li>' .
+			'<li>' . __( '<strong>Upload Scheme</strong>: Optionally you may create your own color scheme using <a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller Mobile</a>. Once your custom scheme is created and downloaded you may upload it here by clicking "Upload" button.', 'jqmobile' ) . '</li>' .
+			'<li>' . __( '<strong>Mobile Layout</strong>: Here you may control the position of the sidebar. It can be left- or right-side aligned.', 'jqmobile' ) . '</li>' .
 		'</ol>' .
 
-		'<p>' . __( 'Advanced Options:', 'jqmobile' ) . '</p>' .
-		'<p>' . __( 'blah-blah-blah, use <a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller</a> blah-blah-blah', 'jqmobile' ) . '</p>' .
+		'<p><strong>' . __( 'Advanced Settings', 'jqmobile' ) . '</strong></p>' .
+		'<p>' . __( 'You may use advanced settings for tuning up your custom created color scheme downloaded from <a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller Mobile</a>.', 'jqmobile' ) . '</p>' .
+		'<p>' . __( 'ThemeRoller Mobile allows you to create up to 26 unique color "swatches" marked by letters from "a" to "z". Each swatch defines the look and feel for a bar, content block and a button with normal, hover and pressed interaction states. Within your site, you may assign swatch letters to the elements on a page to mix and match swatch colors for really rich designs. The elements available for customizing are: "Header", "Body", "Footer", "Post Teaser", "Sticky Post", "Widget", "Widget Content", "Comments" and "Comment Form".', 'jqmobile' ) . '</p>' .
 
-		'<p>' . __( 'Remember to click "Save Changes" to save any changes you have made to the theme options.', 'jqmobile' ) . '</p>' .
+		'<p>' . __( 'Don\'t forget to click "Save Changes" to save all the updates have made to the jQMobile theme options.', 'jqmobile' ) . '</p>' .
 		'<p><strong>' . __( 'For more information:', 'jqmobile' ) . '</strong></p>' .
 		'<p>' . __( '<a href="http://jquerymobile.com/" target="_blank">jQuery Mobile</a>', 'jqmobile' ) . '</p>'.
 		'<p>' . __( '<a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller</a>', 'jqmobile' ) . '</p>'.
@@ -193,8 +195,8 @@ function jqmobile_theme_options_render_page() {
 				</tr>
 
 				<tr valign="top">
-					<th scope="row"><label for="jqmobile_upload"><?php echo _e('Upload Theme', 'jqmobile'); ?></label></th>
-					<td><input name="jqmobile_upload"  class="regular-text" id="jqmobile_upload" type="file" /> <?php submit_button( __( 'Upload' ), 'button', 'upload', false ); ?></td>
+					<th scope="row"><label for="jqmobile_upload"><?php echo _e('Upload Scheme', 'jqmobile'); ?></label></th>
+					<td><input name="jqmobile_upload"  class="regular-text" id="jqmobile_upload" type="file" /> <?php submit_button( __( 'Upload' ), 'button', 'upload', false ); ?> <br/><span class="description">Get your custom created color scheme from <a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller Mobile</a></span></td>
 				</tr>
 
 				<tr valign="top" class="image-radio-option mobile-layout"><th scope="row"><?php _e( 'Mobile Layout', 'jqmobile' ); ?></th>
