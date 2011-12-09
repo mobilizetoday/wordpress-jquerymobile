@@ -355,7 +355,7 @@ function jqmobile_enqueue_color_scheme() {
 	$options = jqmobile_get_theme_options();
 	$color_scheme = $options['color_scheme'];
 
-	wp_enqueue_style( 'jqmobile-'.$color_scheme, get_template_directory_uri() . '/themes/'.$color_scheme.'/jquery.mobile.theme.css', array(), null );
+	wp_enqueue_style( 'jqmobile-theme', get_template_directory_uri() . '/themes/'.$color_scheme.'/jquery.mobile.theme.css', array(), null );
 
 	do_action( 'jqmobile_enqueue_color_scheme', $color_scheme );
 }

@@ -311,7 +311,7 @@ blockquote{
 }
 
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 640px) {
 	.right,
 	#sidebar,
 	.left-sidebar .right,

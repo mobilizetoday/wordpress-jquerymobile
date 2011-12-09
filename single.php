@@ -6,7 +6,7 @@
 
 			<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
-				<?php include (TEMPLATEPATH . '/inc/meta.php' ); ?>
+				<?php /* include (TEMPLATEPATH . '/inc/meta.php' ); */ ?>
 
 				<div class="entry">
 					
