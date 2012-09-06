@@ -23,6 +23,7 @@ function jqmobile_theme_options_init() {
 add_action( 'admin_init', 'jqmobile_theme_options_init' );
 
 function jqmobile_theme_options_add_page() {
+	global $theme_page;
 	$theme_page = add_theme_page(
 		__( 'Theme Options', 'jqmobile' ),
 		__( 'Theme Options', 'jqmobile' ),
@@ -34,28 +35,39 @@ function jqmobile_theme_options_add_page() {
 	if ( ! $theme_page )
 		return;
 
-	$help = '<p>' . __( 'Your current theme, jQMobile, provides Basic and Advanced settings. See descriptions below.', 'jqmobile' ) . '</p>' .
-		'<p><strong>Basic Settings</strong></p>' .
-		'<ol>' .
+	add_action('load-'.$theme_page, 'jqmobile_theme_options_add_help_tab');
+
+}
+add_action( 'admin_menu', 'jqmobile_theme_options_add_page' );
+
+function jqmobile_theme_options_add_help_tab($theme_page) {
+	global $theme_page;
+	$screen = get_current_screen();
+	
+	if ( $screen->id != $theme_page )
+        return;
+	
+	$help_overview = '<p>' . __( 'Your current theme, jQMobile, provides Basic and Advanced settings.', 'jqmobile' ) . '</p>' .
+		'<p>' . __( 'Don\'t forget to click "Save Changes" to save all the updates have made to the jQMobile theme options.', 'jqmobile' ) . '</p>';
+	$help_basic = '<ol>' .
 			'<li>' . __( '<strong>Color Scheme</strong>: Here you can choose one of the available color schemes for your website. By default three schemes are available: "Default", "Valencia" and "Green".', 'jqmobile' ) . '</li>' .
 			'<li>' . __( '<strong>Upload Scheme</strong>: Optionally you may create your own color scheme using <a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller Mobile</a>. Once your custom scheme is created and downloaded you may upload it here by clicking "Upload" button.', 'jqmobile' ) . '</li>' .
 			'<li>' . __( '<strong>Mobile Layout</strong>: Here you may control the position of the sidebar. It can be left- or right-side aligned.', 'jqmobile' ) . '</li>' .
-		'</ol>' .
+		'</ol>';
+	$help_advanced =  '<p>' . __( 'You may use advanced settings for tuning up your custom created color scheme downloaded from <a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller Mobile</a>.', 'jqmobile' ) . '</p>' .
+		'<p>' . __( 'ThemeRoller Mobile allows you to create up to 26 unique color "swatches" marked by letters from "a" to "z". Each swatch defines the look and feel for a bar, content block and a button with normal, hover and pressed interaction states. Within your site, you may assign swatch letters to the elements on a page to mix and match swatch colors for really rich designs. The elements available for customizing are: "Header", "Body", "Footer", "Post Teaser", "Sticky Post", "Widget", "Widget Content", "Comments" and "Comment Form".', 'jqmobile' ) . '</p>';
 
-		'<p><strong>' . __( 'Advanced Settings', 'jqmobile' ) . '</strong></p>' .
-		'<p>' . __( 'You may use advanced settings for tuning up your custom created color scheme downloaded from <a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller Mobile</a>.', 'jqmobile' ) . '</p>' .
-		'<p>' . __( 'ThemeRoller Mobile allows you to create up to 26 unique color "swatches" marked by letters from "a" to "z". Each swatch defines the look and feel for a bar, content block and a button with normal, hover and pressed interaction states. Within your site, you may assign swatch letters to the elements on a page to mix and match swatch colors for really rich designs. The elements available for customizing are: "Header", "Body", "Footer", "Post Teaser", "Sticky Post", "Widget", "Widget Content", "Comments" and "Comment Form".', 'jqmobile' ) . '</p>' .
-
-		'<p>' . __( 'Don\'t forget to click "Save Changes" to save all the updates have made to the jQMobile theme options.', 'jqmobile' ) . '</p>' .
-		'<p><strong>' . __( 'For more information:', 'jqmobile' ) . '</strong></p>' .
+	$help_more = 
+		'<p><strong>' . __('For more information:') . '</strong></p>'.
 		'<p>' . __( '<a href="http://jquerymobile.com/" target="_blank">jQuery Mobile</a>', 'jqmobile' ) . '</p>'.
 		'<p>' . __( '<a href="http://jquerymobile.com/themeroller/" target="_blank">ThemeRoller</a>', 'jqmobile' ) . '</p>'.
 		'<p>' . __( '<a href="http://codex.wordpress.org/Appearance_Theme_Options_Screen" target="_blank">Documentation on Theme Options</a>', 'jqmobile' ) . '</p>';
 
-	add_contextual_help( $theme_page, $help );
+	$screen->add_help_tab( array( 'id' => 'jqmobile-help-overview', 'title' => __('Overview'), 'content' => $help_overview ));
+	$screen->add_help_tab( array( 'id' => 'jqmobile-help-basic', 'title' => __('Basic Settings'), 'content' => $help_basic ));
+	$screen->add_help_tab( array( 'id' => 'jqmobile-help-advanced', 'title' => __('Advanced Settings'), 'content' => $help_advanced ));
+	$screen->set_help_sidebar( $help_more );
 }
-add_action( 'admin_menu', 'jqmobile_theme_options_add_page' );
-
 
 function jqmobile_color_schemes() {
 
@@ -68,7 +80,7 @@ function jqmobile_color_schemes() {
 
 function jqmobile_theme_directories() {
 
-		$theme_root = dirname(__DIR__ )."/themes";
+		$theme_root = get_template_directory()."/themes";
 		$themes_dir = @opendir($theme_root);
 
 		$theme_files = array();
@@ -88,7 +100,7 @@ function jqmobile_theme_directories() {
 			}
 		}
 
-		@closedir($theme_root);
+		@closedir($themes_dir);
 
 		return $theme_files;
 }
@@ -126,7 +138,7 @@ function jqmobile_theme_options_render_page() {
 
 	<div class="wrap">
 		<?php screen_icon(); ?>
-		<h2><?php printf( __( '%s Theme Options', 'jqmobile' ), get_current_theme() ); ?></h2>
+		<h2><?php printf( __( '%s Theme Options', 'jqmobile' ), wp_get_theme() ); ?></h2>
 		<?php $tabs = array( 'basic' => 'Basic Settings', 'advanced' => 'Advanced Settings'); settings_errors(); ?>
 
 			<table width="100%" border="0" style="padding:5px 10px;">

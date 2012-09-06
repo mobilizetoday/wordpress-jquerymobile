@@ -1,9 +1,9 @@
 === jQMobile ===
 Contributors: antony-swans
 Tags: light, silver, two-columns, right-sidebar, flexible-width, full-width-template, sticky-post
-Requires at least: 3.2
-Tested up to: 3.2.1
-Stable tag: 0.2
+Requires at least: 3.3
+Tested up to: 3.4.1
+Stable tag: 0.5
 
 Experimental theme with jQueryMobile framework
 
@@ -23,6 +23,10 @@ Experimental theme with jQueryMobile framework
 * Page load by AJAX
 
 == Changelog ==
+
+= 0.5 =
+* Update to jquerymobile-1.1.1
+* ThemeRoller Support
 
 = 0.3 =
 * Update to jquerymobile-1.0

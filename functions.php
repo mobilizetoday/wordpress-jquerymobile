@@ -1,6 +1,7 @@
 <?php
 
 add_action( 'after_setup_theme', 'jqmobile_setup' );
+add_filter('show_admin_bar', '__return_false');
 
 if ( ! function_exists( 'jqmobile_setup' ) ) {
 	function jqmobile_setup() {
@@ -91,12 +92,12 @@ function jqmobile_ui($key = '') {
 
 function jquerymobile_enquee_script() {
 	wp_enqueue_script('theme-script', get_stylesheet_directory_uri().'/script.js', array('jquery'));
-	wp_enqueue_script('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.0.min.js', array('jquery'), '1.0');
+	wp_enqueue_script('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile-1.1.1.min.js', array('jquery'), '1.0');
 }
 add_action('wp_enqueue_scripts', 'jquerymobile_enquee_script');
 
 function jquerymobile_enquee_style() {
-    wp_enqueue_style('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile.structure-1.0.min.css', false, '1.0');
+    wp_enqueue_style('jquerymobile', get_stylesheet_directory_uri().'/jquerymobile/jquery.mobile.structure-1.1.1.min.css', false, '1.0');
     wp_enqueue_style('custom', get_stylesheet_directory_uri().'/custom.css', false);
 }
 add_action('wp_print_styles', 'jquerymobile_enquee_style');
